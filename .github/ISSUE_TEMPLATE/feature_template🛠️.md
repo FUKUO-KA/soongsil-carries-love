@@ -1,10 +1,9 @@
 ---
-name: "기능 작업 이슈 템플릿\U0001F6E0️"
+name: "Feature Template\U0001F6E0️"
 about: "Feature Issue 템플릿\U0001F6E0️"
-title: 'feat: 작업 내용'
+title: "feat: 작업 내용"
 labels: feat
-assignees: ''
-
+assignees: ""
 ---
 
 # ISSUE 🛠️ : 작업 내용
