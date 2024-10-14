@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Suspense } from 'react';
 import './App.css'
+import { createBrowserRouter, RouterProvider, RouteObject, Outlet, ScrollRestoration } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-function App() {
-  const [count, setCount] = useState(0)
+const queryClient = new QueryClient();
 
+const publicRoutes: RouteObject[] = [
+  {
+    path: '/',
+    element: (
+      <>
+        <ScrollRestoration />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </>
+    ),
+    children: [
+      {
+        path: '/',
+        element: <div />,
+      },
+    ],
+  },
+];
+
+const routes: RouteObject[] = [
+  {
+    element:(
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+      </QueryClientProvider>
+    ),
+    errorElement: <div>Error</div>,
+    children: [...publicRoutes],
+  },
+];
+
+const router = createBrowserRouter(routes);
+
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <RouterProvider router={router} />
+  );
+};
 
 export default App
