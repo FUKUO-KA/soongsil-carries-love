@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import './App.css'
 import { createBrowserRouter, RouterProvider, RouteObject, Outlet, ScrollRestoration } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Frame from './components/Frame/Frame';
+
 
 const queryClient = new QueryClient();
 
@@ -41,7 +43,9 @@ const router = createBrowserRouter(routes);
 
 const App = () => {
   return (
+    <Frame>
       <RouterProvider router={router} />
+    </Frame>
   );
 };
 
