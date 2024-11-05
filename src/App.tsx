@@ -1,9 +1,15 @@
 import { Suspense } from 'react';
-import './App.css'
-import { createBrowserRouter, RouterProvider, RouteObject, Outlet, ScrollRestoration } from 'react-router-dom';
+import './App.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  RouteObject,
+  Outlet,
+  ScrollRestoration,
+} from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Frame from './components/Frame/Frame';
-
+import { Landing } from './pages/Landing/Landing';
 
 const queryClient = new QueryClient();
 
@@ -23,13 +29,17 @@ const publicRoutes: RouteObject[] = [
         path: '/',
         element: <div />,
       },
+      {
+        path: '/landing',
+        element: <Landing />,
+      },
     ],
   },
 ];
 
 const routes: RouteObject[] = [
   {
-    element:(
+    element: (
       <QueryClientProvider client={queryClient}>
         <Outlet />
       </QueryClientProvider>
@@ -49,4 +59,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
