@@ -36,13 +36,13 @@ export const TextField = ({ title, description, isError, errorMessage, ...props 
           )}
         </StyledTextFieldLabel>
         {isError && (
-          <StyledTextFieldHelperText $isError={true}>{errorMessage}</StyledTextFieldHelperText>
+          <StyledTextFieldHelperText $isError={isError}>{errorMessage}</StyledTextFieldHelperText>
         )}
       </StyledTextFieldLabelContainer>
       <StyledTextFieldInput
         id={title}
         placeholder={description}
-        $isError={true}
+        $isError={isError}
         value={inputValue}
         onChange={handleInputChange}
         {...props}
