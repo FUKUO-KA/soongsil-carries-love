@@ -3,7 +3,7 @@ import colors from '@/styles/color';
 import { getFontStyle } from '@/styles/typo';
 
 interface isErrorProps {
-  $isError: boolean;
+  $isError?: boolean;
 }
 
 export const StyledTextFieldContainer = styled.div`
