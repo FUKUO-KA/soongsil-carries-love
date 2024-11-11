@@ -17,7 +17,7 @@ const colors: Colors = {
   secondary_text: '#767676',
   line: '#EFF2F5',
   logo_color_2:
-    'linear-gradient(to bottom, rgba(255, 255, 255, 1) 1%, rgba(255, 200, 100, 1) 15%, rgba(255, 200, 100, 1) 45%, rgba(255, 220, 110, 1) 90%)',
+    'linear-gradient(0deg, rgba(255, 255, 255, 0.18) 77.63%, rgba(255, 255, 255, 0.60) 100%), linear-gradient(0deg, #FCD62C 0%, #FF9244 100%)',
   background: 'linear-gradient(to bottom, #93E9FF 0%, #FFEAA7 100%)',
   box_border: '#CFD6E4',
   sub_1: '#FF6868',
