@@ -10,7 +10,7 @@ const Frame = ({ children }: FrameProps) => {
     return (
         <>
             <GlobalStyles/>
-            <FrameContainer>{children}<h1>1</h1></FrameContainer>
+            <FrameContainer>{children}</FrameContainer>
         </>
     );
 };
