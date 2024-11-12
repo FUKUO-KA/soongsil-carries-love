@@ -3,13 +3,13 @@ import { getFontStyle } from '@/styles/typo';
 import colors from '@/styles/color';
 
 
-const ProfileWrapper = styled.div`
+export const ProfileWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
 `;
 
-const UserAvatar = styled.div`
+export const UserAvatar = styled.div`
     position: relative;
     left: 2rem;
     background-color: ${colors.profile_background};
@@ -21,7 +21,7 @@ const UserAvatar = styled.div`
     align-items: center;  
 `;
 
-const UserInfoWrapper = styled.div`
+export const UserInfoWrapper = styled.div`
     background-color: ${colors.profile_background};
     width: 121px;
     height: 35px;
@@ -33,7 +33,7 @@ const UserInfoWrapper = styled.div`
     border-radius: 20px;
 `
 
-const NameWrapper = styled.div`
+export const NameWrapper = styled.div`
     background-color: ${colors.profile_text_background};
     width: 82px;
     height: 22px;
@@ -43,16 +43,9 @@ const NameWrapper = styled.div`
     left: 10px;
 `;
 
-const UserName = styled.h1`
+export const UserName = styled.h1`
     color: ${colors.profile_text};
     line-height: 1.8;
     ${getFontStyle('Caption2_B')}
 `;
 
-export default {
-    ProfileWrapper,
-    UserAvatar,
-    UserInfoWrapper,
-    NameWrapper,
-    UserName
-};

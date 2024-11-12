@@ -1,18 +1,23 @@
-import Styled from './Profile.style';
+import {
+  ProfileWrapper,
+  UserAvatar,
+  UserInfoWrapper,
+  NameWrapper,
+  UserName
+} from './Profile.style';
 import AvatarIcon from '@/assets/images/avatar.svg';
 
-const Profile = ({ name = '알 수 없음' }) => (  
-  <Styled.ProfileWrapper>
-    <Styled.UserAvatar>
+export const Profile = ({ name = '알 수 없음' }) => (  
+  <ProfileWrapper>
+    <UserAvatar>
       <img src={AvatarIcon} alt="avatar" />
-    </Styled.UserAvatar>
-    <Styled.UserInfoWrapper>
-      <Styled.NameWrapper>
-        <Styled.UserName>{name}</Styled.UserName>
-      </Styled.NameWrapper>
-    </Styled.UserInfoWrapper>
-  </Styled.ProfileWrapper>
+    </UserAvatar>
+    <UserInfoWrapper>
+       <NameWrapper>
+        <UserName>{name}</UserName>
+      </NameWrapper>
+    </UserInfoWrapper>
+  </ProfileWrapper>
 );
 
-export default Profile; 
 
