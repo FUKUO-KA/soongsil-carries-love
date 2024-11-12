@@ -1,46 +1,58 @@
 import styled from 'styled-components';
+import { getFontStyle } from '@/styles/typo';
+import colors from '@/styles/color';
 
 
-const ProfileContainer = styled.div`
+const ProfileWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
 `;
 
-const ProfileImageContainer = styled.div`
+const UserAvatar = styled.div`
     position: relative;
     left: 2rem;
-    /* TODO: 컬러 CONSTANT 작업 필요 */
-    background-color: #FCF3CC;
-
+    background-color: ${colors.profile_background};
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    display: flex;          
+    justify-content: center;
+    align-items: center;  
 `;
 
-const ProfileNameWrapper = styled.div`
-    /* TODO: 컬러 CONSTANT 작업 필요 */
-    background-color: #FCF3CC;
+const UserInfoWrapper = styled.div`
+    background-color: ${colors.profile_background};
+    width: 121px;
+    height: 35px;
+    flex-shrink: 0;
 
-    padding: 0.3rem 0.7rem 0.3rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
     border-radius: 20px;
-
 `
 
-const ProfileNameContainer = styled.div`
-    /* TODO: 컬러 CONSTANT 작업 필요 */
-    background-color: #F7CC65;
+const NameWrapper = styled.div`
+    background-color: ${colors.profile_text_background};
+    width: 82px;
+    height: 22px;
+    border-radius: 11px;
 
-    font-size: 12px;
+    position: relative;
+    left: 10px;
+`;
 
-    padding: 0.2rem 1rem;
-    border-radius: 20px;
-    font-size: 1rem;
+const UserName = styled.h1`
+    color: ${colors.profile_text};
+    line-height: 1.8;
+    ${getFontStyle('Caption2_B')}
 `;
 
 export default {
-    ProfileContainer,
-    ProfileImageContainer,
-    ProfileNameWrapper,
-    ProfileNameContainer,
+    ProfileWrapper,
+    UserAvatar,
+    UserInfoWrapper,
+    NameWrapper,
+    UserName
 };

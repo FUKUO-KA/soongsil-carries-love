@@ -7,7 +7,7 @@ interface HeaderProps {
   right?: React.ReactNode;
 }
 
-const Header = ({ left, right }: HeaderProps) => {
+export const Header = ({ left, right }: HeaderProps) => {
   return (
     <Styled.Header>
       <Styled.HeaderLeft>{left}</Styled.HeaderLeft>
@@ -15,5 +15,3 @@ const Header = ({ left, right }: HeaderProps) => {
     </Styled.Header>
   );
 };
-
-export default Header;
