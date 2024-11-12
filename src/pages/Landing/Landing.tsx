@@ -1,11 +1,10 @@
-import Header from '@/components/Header';
-import Profile from '@/components/Profile';
-const Landing = () => {
+import { StyledText } from './Landing.style';
+
+export const Landing = () => {
   return (
-    <div>
-      <Header right={<Profile name="OO 고등학교" />} />
-    </div>
+    <>
+      <StyledText>안녕하세요</StyledText>
+      <h1>테스트입니다</h1>
+    </>
   );
 };
-
-export default Landing;
