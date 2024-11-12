@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import colors  from '@/styles/color';
 import { getFontStyle } from '@/styles/typo';
-import NameTagImage from '@/assets/icons/NameTag.svg';
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -56,7 +55,7 @@ export const TableHeader = styled.div`
     justify-content: center;
 `;
 
-export const TableRow = styled.div<{ isHighlighted?: boolean }>`
+export const TableRow = styled.div`
     display: grid;
     grid-template-columns: 80px 1fr 100px;
     gap: 10px;

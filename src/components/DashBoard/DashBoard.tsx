@@ -16,7 +16,6 @@ interface SchoolData {
     rank: number;
     name: string;
     userCount: number;
-    isHighlighted?: boolean;
   }
   
 const schoolData: SchoolData[] = [
@@ -48,13 +47,13 @@ const DashBoardTable = () => {
                         <Label labelText='학교' size='small'/>
                     </div>
                     <div>
-                        <Label labelText='접속자 수' size='small'/>
+                        <Label labelText='인원수' size='small'/>
                     </div>
                 </TableHeader>
                 {schoolData.map((school) => (
-                    <TableRow key={school.rank} isHighlighted={school.isHighlighted}>
+                    <TableRow key={school.rank}>
                         <RankNumber>{school.rank}</RankNumber>
-                        <SchoolName className="school-name">{school.name}</SchoolName>
+                        <SchoolName>{school.name}</SchoolName>
                         <UserCount>
                             <img src={UserIcon} alt="user-icon" />
                             {school.userCount}
