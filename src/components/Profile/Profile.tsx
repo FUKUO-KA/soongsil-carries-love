@@ -5,7 +5,7 @@ import {
   NameWrapper,
   UserName
 } from './Profile.style';
-import AvatarIcon from '@/assets/images/avatar.svg';
+import AvatarIcon from '@/assets/icons/avatar.svg';
 
 export const Profile = ({ name = '알 수 없음' }) => (  
   <ProfileWrapper>
