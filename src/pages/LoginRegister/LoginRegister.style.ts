@@ -1,4 +1,5 @@
 import colors from '@/styles/color';
+import { getFontStyle } from '@/styles/typo';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
@@ -14,20 +15,25 @@ export const StyledContainer = styled.div`
 export const StyledLogo = styled.img`
   width: 247.453px;
 `;
-
-export const StyledInfoText = styled.div`
-  color: ${colors.secondary_text};
-  text-align: center;
-  font-family: 'Pretendard Variable';
-  font-size: 6px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+export const StyledTitlePinContainer = styled.div`
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
 `;
 
-export const StyledCertificateBtnContainer = styled.div`
-  padding: 22px;
-  position: absolute;
-  float: right;
-  right: 16px;
+interface TitlePinProps {
+  $width: string;
+}
+
+export const StyledTitlePin = styled.div<TitlePinProps>`
+  width: ${({ $width }) => ($width === 'LONG' ? '17px' : '6px')};
+  height: 6px;
+  background: ${colors.logo_color_2};
+`;
+
+export const StyledTitle = styled.div`
+  ${getFontStyle('Header5')};
+  color: ${colors.text};
 `;
