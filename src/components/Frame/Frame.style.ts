@@ -59,7 +59,7 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: flex-start;
         font-family: 'Pretendard Variable';
         background : ${colors.background};
-        overflow: hidden;
+        overflow-x: hidden;
         position: relative;
     }
 `;
@@ -68,6 +68,7 @@ export const FrameContainer = styled.div`
   max-width: 100%;
   position: relative;
   min-height: calc(var(--vh, 1vh) * 100);
+  margin-bottom: 30px;
 `;
 
 interface ShineProps {
