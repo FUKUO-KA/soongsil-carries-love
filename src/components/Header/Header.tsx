@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Styled from './Header.style';
+import {
+  WrapperHeader,
+} from './Header.style';
 
 interface HeaderProps {
   left?: React.ReactNode;
@@ -9,9 +11,9 @@ interface HeaderProps {
 
 export const Header = ({ left, right }: HeaderProps) => {
   return (
-    <Styled.Header>
-      <Styled.HeaderLeft>{left}</Styled.HeaderLeft>
-      <Styled.HeaderRight>{right}</Styled.HeaderRight>
-    </Styled.Header>
+    <WrapperHeader>
+      {left}
+      {right}
+    </WrapperHeader>
   );
 };

@@ -1,24 +1,10 @@
 import styled from 'styled-components';
 
 
-const Header = styled.div`
+export const WrapperHeader = styled.div`
   height: 68px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 `;
-
-const HeaderLeft = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const HeaderRight = styled.div``;
-
-export default {
-  Header,
-  HeaderLeft,
-  HeaderRight,
-};
