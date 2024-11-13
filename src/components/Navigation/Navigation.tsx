@@ -23,7 +23,8 @@ const NavItems = ({ children }: { children: React.ReactNode }) =>{
 }
 
 export const Navigation = () => {
-    return <NavWrapper>
+    return (
+    <NavWrapper>
         <NavItems>
             <NavItemIconWrapper>
                 <HomeIcon />
@@ -32,5 +33,6 @@ export const Navigation = () => {
             </NavItemIconWrapper>
         </NavItems>
     </NavWrapper>
+  );
 };
 

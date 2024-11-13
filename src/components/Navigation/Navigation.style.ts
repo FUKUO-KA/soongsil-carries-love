@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { getFontStyle } from '@/styles/typo';
 import colors from '@/styles/color';
 
 export const NavWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 10px;
 `;
 
 export const NavItemLeft = styled.div`
@@ -15,7 +15,6 @@ export const NavItemLeft = styled.div`
     width: 51px;
     height: 51px;
     border-radius: 50%;
-
     display: flex;          
     justify-content: center;
     align-items: center;  
@@ -26,7 +25,6 @@ export const NavItemCenter = styled.div`
     width: 51px;
     height: 51px;
     border-radius: 50%;
-
     display: flex;          
     justify-content: center;
     align-items: center; 
@@ -40,7 +38,6 @@ export const NavItemRight = styled.div`
     width: 51px;
     height: 51px;
     border-radius: 50%;
-
     display: flex;          
     justify-content: center;
     align-items: center;  
@@ -49,8 +46,7 @@ export const NavItemRight = styled.div`
 export const NavItemIconWrapper = styled.div`
     display: flex;
     position: relative;
-    z-index: 100;\
-
-    gap: 12px;
+    z-index: 100;
+    gap: 20px;
 `;
 
