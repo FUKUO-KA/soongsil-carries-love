@@ -27,7 +27,7 @@ const publicRoutes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <div />,
+        element: <Landing />,
       },
       {
         path: '/landing',

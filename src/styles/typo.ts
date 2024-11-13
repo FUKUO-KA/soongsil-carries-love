@@ -8,7 +8,10 @@ export type TypoType =
   | 'Body2'
   | 'Caption1'
   | 'Caption2'
-  | 'Caption3';
+  | 'Caption3'
+  | 'Caption1_B'
+  | 'Caption2_B'
+  | 'Caption3_B';
 
 interface Font {
   fontSize: string;
@@ -28,6 +31,9 @@ const typo: Typo = {
   Caption1: { fontSize: '16px', fontWeight: 400 },
   Caption2: { fontSize: '12px', fontWeight: 400 },
   Caption3: { fontSize: '8px', fontWeight: 400 },
+  Caption1_B: { fontSize: '16px', fontWeight: 700 },
+  Caption2_B: { fontSize: '12px', fontWeight: 700 },
+  Caption3_B: { fontSize: '8px', fontWeight: 700 },
 };
 
 export const getFontStyle = (type: TypoType) => {
