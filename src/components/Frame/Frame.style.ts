@@ -1,5 +1,5 @@
 import colors from '@/styles/color';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -58,12 +58,50 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         justify-content: flex-start;
         font-family: 'Pretendard Variable';
-        // 범위 확인용
         background : ${colors.background};
-
+        overflow: hidden;
+        position: relative;
     }
 `;
 
 export const FrameContainer = styled.div`
   max-width: 100%;
+  position: relative;
+  min-height: calc(var(--vh, 1vh) * 100);
+`;
+
+interface ShineProps {
+  $width: string;
+  $top?: string;
+  $bottom?: string;
+  $left?: string;
+  $right?: string;
+  $rotate?: string;
+}
+
+const shineAnimation = () => keyframes`
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(30deg) scale(1.8);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+`;
+
+export const StyledShine = styled.img<ShineProps>`
+  position: relative;
+  width: ${({ $width }) => $width};
+  top: ${({ $top }) => $top};
+  bottom: ${({ $bottom }) => $bottom};
+  left: ${({ $left }) => $left};
+  right: ${({ $right }) => $right};
+  animation: ${shineAnimation} 3s ease-in-out infinite;
+`;
+
+export const StyledShineContainer = styled.div`
+  width: inherit;
+  position: absolute;
 `;
