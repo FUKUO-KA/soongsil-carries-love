@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const StyledWhiteContainer = styled.div`
   width: 342px;
   height: fit-content;
+  text-align: center;
   padding: 1px 30px 26px 30px;
   background: ${colors.white};
   border-radius: 12px;
