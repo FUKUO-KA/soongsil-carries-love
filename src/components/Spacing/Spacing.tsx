@@ -1,4 +1,4 @@
-import { HTMLAttributes, memo } from 'react';
+import { HTMLAttributes } from 'react';
 import { StyledSpacing } from './Spacing.style';
 import { DEFAULT_DIRECTION, Direction } from '@/constants/spacing.constant';
 
