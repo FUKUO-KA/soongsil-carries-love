@@ -14,7 +14,7 @@ export const RegisterDetail = () => {
         isCertificate={true}
       />
       <StyledConfirmBtnContainer>
-        <Button size="SMALL" text="인증번호" />
+        <Button size="SMALL" text="중복확인" />
       </StyledConfirmBtnContainer>
       <TextField description="비밀번호를 입력해주세요..." title="비밀번호" required={true} />
       <TextField
