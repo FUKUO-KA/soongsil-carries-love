@@ -13,9 +13,17 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   description: string;
   isError?: boolean;
   errorMessage?: string;
+  isCertificate?: boolean;
 }
 
-export const TextField = ({ title, description, isError, errorMessage, ...props }: InputProps) => {
+export const TextField = ({
+  title,
+  description,
+  isError,
+  errorMessage,
+  isCertificate,
+  ...props
+}: InputProps) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +53,7 @@ export const TextField = ({ title, description, isError, errorMessage, ...props 
         $isError={isError}
         value={inputValue}
         onChange={handleInputChange}
+        $isCertificate={isCertificate}
         {...props}
       />
     </StyledTextFieldContainer>

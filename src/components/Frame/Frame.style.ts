@@ -1,5 +1,5 @@
 import colors from '@/styles/color';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -58,12 +58,15 @@ export const GlobalStyles = createGlobalStyle`
         align-items: center;
         justify-content: flex-start;
         font-family: 'Pretendard Variable';
-        // 범위 확인용
         background : ${colors.background};
-
+        overflow-x: hidden;
+        position: relative;
     }
 `;
 
 export const FrameContainer = styled.div`
   max-width: 100%;
+  position: relative;
+  min-height: calc(var(--vh, 1vh) * 100);
+  margin-bottom: 30px;
 `;

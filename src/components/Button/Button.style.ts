@@ -18,6 +18,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   width: ${({ $size }) => `${sizes[$size]}px`};
   height: ${({ $size }) => ($size === 'SMALL' ? 23 : 38)}px;
   background: ${colors.logo_color_2};
+  color: ${colors.white};
   border-radius: 11px;
   ${({ $size }) => ($size === 'SMALL' ? getFontStyle('Caption2') : getFontStyle('Header5'))};
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
