@@ -16,5 +16,4 @@ export const StyledCertificateBtnContainer = styled.div`
   position: absolute;
   float: right;
   right: 16px;
-  top: 68px;
 `;
