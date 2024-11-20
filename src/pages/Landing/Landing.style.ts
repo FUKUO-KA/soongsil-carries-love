@@ -6,3 +6,8 @@ export const StyledText = styled.div`
   ${getFontStyle('Caption1')};
   color: ${colors.sub_1};
 `;
+
+export const StyledLogo = styled.img`
+  width: 240 453px;
+  margin: 100px auto;
+`;
