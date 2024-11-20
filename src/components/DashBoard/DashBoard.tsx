@@ -8,6 +8,7 @@ import {
     RankNumber,
     SchoolName,
     UserCount,
+    DashBoardHeaderWrapper,
 } from './DashBoard.style';
 import { Label } from '@/components/Label/Label';
 import UserIcon from '@/assets/icons/UserCountIcon.svg';
@@ -28,8 +29,10 @@ const schoolData: SchoolData[] = [
 const DashBoardHeader = () => {
     return (
         <>
-            <Label labelText='오늘 동창이 제일 많이 접속한 고등학교 순위'/>
-            <DashedLine/>
+            <DashBoardHeaderWrapper>
+                <Label labelText='오늘 동창이 제일 많이 접속한 고등학교 순위'/>
+                <DashedLine/>
+            </DashBoardHeaderWrapper>
         </>
 
     );

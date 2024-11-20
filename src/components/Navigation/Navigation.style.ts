@@ -4,7 +4,6 @@ import colors from '@/styles/color';
 export const NavWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 10px;
 `;
 

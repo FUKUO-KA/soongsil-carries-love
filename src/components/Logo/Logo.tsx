@@ -1,11 +1,13 @@
-import Logo from '@/assets/images/Logo.svg';
-import LogoBackground from '@/assets/images/LogoBackground.svg';
-import { BackgroundLogo } from './Logo.style.ts';
+import Logo from '@/assets/logo.png';
+import { LogoWrapper, StyledLogo } from './Logo.style';
+
 
 export const LogoComponent = () => {
     return (
         <>
-            <BackgroundLogo src={Logo} alt="logo"/>
+            <LogoWrapper>
+                <StyledLogo src = {Logo}></StyledLogo>
+            </LogoWrapper>
         </>
     );
 }

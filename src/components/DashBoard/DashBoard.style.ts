@@ -23,6 +23,13 @@ export const DashBoardWrapper = styled.div`
     border-radius: 4px;
 `;
 
+export const DashBoardHeaderWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
 export const DashedLine = styled.div`
     margin: 8px auto;
     height: 3px;
@@ -53,6 +60,12 @@ export const TableHeader = styled.div`
 
     align-items: center;
     justify-content: center;
+
+    > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const TableRow = styled.div`
@@ -86,4 +99,9 @@ export const UserCount = styled.div`
 
     ${getFontStyle('Caption2_B')}
     color: #877C5C;
+`;
+
+export const StyledLogo = styled.img`
+    width: 240 453px;
+    margin: 100px auto;
 `;
