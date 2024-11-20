@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import colors from '@/styles/color';
+import { getFontStyle } from '@/styles/typo';
 
 export const NavWrapper = styled.div`
     display: flex;
@@ -14,6 +15,7 @@ export const NavItemLeft = styled.div`
     width: 51px;
     height: 51px;
     border-radius: 50%;
+
     display: flex;          
     justify-content: center;
     align-items: center;  
@@ -25,9 +27,10 @@ export const NavItemCenter = styled.div`
     height: 51px;
     border-radius: 50%;
     display: flex;          
-    justify-content: center;
-    align-items: center; 
     z-index: 1;
+
+    justify-content: center;
+    align-items: center;
 `;
 
 export const NavItemRight = styled.div`
@@ -46,6 +49,52 @@ export const NavItemIconWrapper = styled.div`
     display: flex;
     position: relative;
     z-index: 100;
-    gap: 20px;
+    gap: 21px;
+    justify-content: center;
+    align-items: center;
 `;
 
+export const IconWrapper = styled.div<{ selected: boolean }>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg path {
+        fill: ${({ selected }) => selected ? '#F7CC65' : '#877C5C'};
+    }
+`;
+
+export const StyledLabel = styled.div<{ $visible: boolean }>`
+    opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+    visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    position: absolute;
+    top: -20px;
+    text-align: center;
+    background-color: #F7CC65;
+    width: fit-content;
+    padding: 1px 9px;
+    border-radius: 9px;
+`;
+
+export const StyledText = styled.p`
+    color: #877C5C;
+    ${getFontStyle('Caption3_B')}
+    white-space: nowrap;
+`;
+
+export const LabelWrapper = styled.div`
+    display: flex;
+    position: relative;
+    z-index: 100;
+    gap: 21px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
