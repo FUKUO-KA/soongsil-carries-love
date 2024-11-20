@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import './App.css';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,6 +9,9 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Frame from './components/Frame/Frame';
 import { Landing } from './pages/Landing/Landing';
+import { LoginRegister } from './pages/LoginRegister/LoginRegister';
+import { SelectSchool } from './pages/LoginRegister/SelectSchool/SelectSchool';
+import { RegisterDetail } from './pages/LoginRegister/RegisterDetail/RegisterDetail';
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,20 @@ const publicRoutes: RouteObject[] = [
       {
         path: '/landing',
         element: <Landing />,
+      },
+      {
+        path: '/sign',
+        element: <LoginRegister />,
+        children: [
+          {
+            path: 'select-school',
+            element: <SelectSchool />,
+          },
+          {
+            path: 'register',
+            element: <RegisterDetail />,
+          },
+        ],
       },
     ],
   },

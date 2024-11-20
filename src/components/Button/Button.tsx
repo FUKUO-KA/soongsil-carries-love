@@ -6,9 +6,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size: ButtonSizeType;
 }
 
-export const Button = ({ text, size, disabled }: ButtonProps) => {
+export const Button = ({ text, size, disabled, onClick }: ButtonProps) => {
   return (
-    <StyledButton disabled={disabled} $size={size}>
+    <StyledButton disabled={disabled} $size={size} onClick={onClick}>
       {text}
     </StyledButton>
   );
