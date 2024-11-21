@@ -5,7 +5,7 @@ import { DashBoard } from '@/components/DashBoard/DashBoard';
 import { LogoComponent } from '@/components/Logo/Logo';
 import { Spacing } from '@/components/Spacing/Spacing';
 import { useNavigationStore } from '@/stores';
-
+import { FieChart } from '@/components/FieChart/FieChart';
 const HomeSection = () => {
     return (
         <>
@@ -21,9 +21,10 @@ const GraphSection = () => {
     return (
         <>
             <Spacing size={28} direction='vertical'/>
-            <h1>그래프</h1>
+            <FieChart/>
+
         </>
-    )
+    );
 }
 
 const MessageSection = () => {
