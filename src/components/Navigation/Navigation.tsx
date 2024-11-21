@@ -7,7 +7,6 @@ import {
   IconWrapper,
   StyledLabel,
   StyledText,
-  LabelWrapper,
   Column,
 } from '@/components/Navigation/Navigation.style';
 
@@ -16,7 +15,6 @@ import GraphIcon from '@/assets/icons/graph.svg?react'
 import MessageIcon from '@/assets/icons/message.svg?react'
 
 import { useNavigationStore } from '@/stores';
-import { Spacing } from '@/components/Spacing/Spacing';
 
 const NavItems = ({ children }: { children: React.ReactNode }) =>{
     return (
