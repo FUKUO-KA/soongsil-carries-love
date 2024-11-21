@@ -6,6 +6,35 @@ import { LogoComponent } from '@/components/Logo/Logo';
 import { Spacing } from '@/components/Spacing/Spacing';
 import { useNavigationStore } from '@/stores';
 
+const HomeSection = () => {
+    return (
+        <>
+            <Spacing size={28} direction='vertical'/>
+            <LogoComponent/>
+            <Spacing size={28} direction='vertical'/>
+            <DashBoard/>
+        </>
+    )
+}
+
+const GraphSection = () => {
+    return (
+        <>
+            <Spacing size={28} direction='vertical'/>
+            <h1>그래프</h1>
+        </>
+    )
+}
+
+const MessageSection = () => {
+    return (
+        <>
+            <Spacing size={28} direction='vertical'/>
+            <h1>메시지</h1>
+        </>
+    )
+}
+
 export const Home = () => {
     const { selectedNavItem } = useNavigationStore();
     return (
@@ -14,18 +43,13 @@ export const Home = () => {
                 right={<Profile name="OO 고등학교" />}
                 left = {<Navigation/>} />
             {selectedNavItem === 'home' && (
-                <>
-                    <Spacing size={28} direction='vertical'/>
-                    <LogoComponent/>
-                    <Spacing size={28} direction='vertical'/>
-                    <DashBoard/>
-                </>
+                <HomeSection/>
             )}
             {selectedNavItem === 'graph' && (
-                <></>
+                <GraphSection/>
             )}
             {selectedNavItem === 'message' && (
-                <></>
+                <MessageSection/>
             )}
         </>
     )
