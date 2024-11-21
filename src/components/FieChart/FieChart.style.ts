@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import GraphBackground from '@/assets/images/GraphBackground.svg?react';
 import { getFontStyle } from '@/styles/typo';
-import colors  from '@/styles/color';
 
 export const GraphWrapper = styled.div`
     position: relative;
