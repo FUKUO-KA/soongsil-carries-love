@@ -25,6 +25,7 @@ const GraphSection = () => {
         <>
             <Spacing size={28} direction='vertical'/>
             <FieChart/>
+            <Spacing size={28} direction='vertical'/>
             <BarChart/>
         </>
     );
