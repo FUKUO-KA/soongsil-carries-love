@@ -6,6 +6,9 @@ import { LogoComponent } from '@/components/Logo/Logo';
 import { Spacing } from '@/components/Spacing/Spacing';
 import { useNavigationStore } from '@/stores';
 import { FieChart } from '@/components/FieChart/FieChart';
+import { BarChart } from '@/components/BarChart/BarChart';
+import { HomeWrapper } from './Home.style';
+
 const HomeSection = () => {
     return (
         <>
@@ -22,7 +25,7 @@ const GraphSection = () => {
         <>
             <Spacing size={28} direction='vertical'/>
             <FieChart/>
-
+            <BarChart/>
         </>
     );
 }
@@ -39,7 +42,7 @@ const MessageSection = () => {
 export const Home = () => {
     const { selectedNavItem } = useNavigationStore();
     return (
-        <>
+        <HomeWrapper>
             <Header 
                 right={<Profile name="OO 고등학교" />}
                 left = {<Navigation/>} />
@@ -52,7 +55,7 @@ export const Home = () => {
             {selectedNavItem === 'message' && (
                 <MessageSection/>
             )}
-        </>
+        </HomeWrapper>
     )
 
 }

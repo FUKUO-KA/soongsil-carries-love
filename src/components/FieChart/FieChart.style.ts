@@ -4,6 +4,8 @@ import { getFontStyle } from '@/styles/typo';
 
 export const GraphWrapper = styled.div`
     position: relative;
+    width: 100%;
+    height: 100%;
 `;
 
 export const StyledGraphBackground = styled(GraphBackground)`
