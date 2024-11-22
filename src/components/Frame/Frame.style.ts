@@ -20,6 +20,8 @@ export const GlobalStyles = createGlobalStyle`
         border: 0;
         vertical-align: baseline;
     }
+
+
     article, aside, details, figcaption, figure, 
     footer, header, hgroup, menu, nav, section {
         display: block;
@@ -65,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const FrameContainer = styled.div`
-  max-width: 100%;
+  max-width: calc(100%-48px);
   position: relative;
   min-height: calc(var(--vh, 1vh) * 100);
   margin-bottom: 30px;

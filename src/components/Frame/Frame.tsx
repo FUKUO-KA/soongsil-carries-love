@@ -10,8 +10,10 @@ const Frame = ({ children }: FrameProps) => {
   return (
     <>
       <GlobalStyles />
-      <RenderShines />
-      <FrameContainer>{children}</FrameContainer>
+      <FrameContainer>
+        <RenderShines />
+        {children}
+      </FrameContainer>
     </>
   );
 };
