@@ -42,18 +42,8 @@ export const StyledChatBubble = styled.div<isMineProps>`
   font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word;
-  ${(props) =>
-    props.$isMine
-      ? css`
-          align-self: flex-end;
-          background-color: ${colors.white};
-          color: black;
-          border-top-right-radius: 0;
-        `
-      : css`
-          align-self: flex-start;
-          background-color: ${colors.white};
-          color: black;
-          border-top-left-radius: 0;
-        `}
+  background-color: ${colors.white};
+  color: black;
+  border-top-right-radius: 0;
+  align-self: ${(props) => (props.$isMine ? 'flex-end' : 'flex-start')};
 `;
