@@ -33,6 +33,6 @@ export const StyledShine = styled.img<ShineProps>`
 
 export const StyledShineContainer = styled.div`
   position: absolute;
-  width: 100%;
+  max-width: 390px;
   z-index: -1;
 `;

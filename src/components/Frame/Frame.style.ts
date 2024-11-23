@@ -67,8 +67,9 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const FrameContainer = styled.div`
-  max-width: calc(100%-48px);
+  max-width: 100%;
   position: relative;
   min-height: calc(var(--vh, 1vh) * 100);
   margin-bottom: 30px;
+  padding: 0 24px;
 `;
