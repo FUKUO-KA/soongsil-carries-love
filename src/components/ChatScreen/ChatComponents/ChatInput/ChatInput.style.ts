@@ -18,8 +18,7 @@ export const StyledChatInput = styled.textarea`
   height: 29px;
   background-color: ${colors.white};
   padding: 8px 10px;
-  ${getFontStyle('Caption2')};
-  font-weight: 700;
+  ${getFontStyle('Caption2_B')};
   color: ${colors.secondary_text};
   border-radius: 9px;
   border: none;

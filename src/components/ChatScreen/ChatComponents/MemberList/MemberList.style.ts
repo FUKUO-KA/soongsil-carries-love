@@ -22,8 +22,7 @@ export const StyledProfile = styled.img`
 `;
 
 export const StyledMemberName = styled.div`
-  ${getFontStyle('Caption2')};
-  font-weight: 700;
+  ${getFontStyle('Caption2_B')};
   color: ${colors.secondary_text};
 `;
 
@@ -32,8 +31,7 @@ export const StyledContactBtn = styled.button`
   height: 26px;
   border-radius: 16px;
   background-color: #fea155;
-  ${getFontStyle('Caption2')};
-  font-weight: 700;
+  ${getFontStyle('Caption2_B')};
   color: #fcf3cc;
   line-height: 0.7;
 `;
