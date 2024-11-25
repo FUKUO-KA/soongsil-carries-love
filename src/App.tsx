@@ -12,7 +12,7 @@ import { Landing } from './pages/Landing/Landing';
 import { LoginRegister } from './pages/LoginRegister/LoginRegister';
 import { SelectSchool } from './pages/LoginRegister/SelectSchool/SelectSchool';
 import { RegisterDetail } from './pages/LoginRegister/RegisterDetail/RegisterDetail';
-
+import { Home } from '@/pages/Home/Home';
 const queryClient = new QueryClient();
 
 const publicRoutes: RouteObject[] = [
@@ -48,6 +48,10 @@ const publicRoutes: RouteObject[] = [
             element: <RegisterDetail />,
           },
         ],
+      },
+      {
+        path: '/home',
+        element: <Home />,
       },
     ],
   },

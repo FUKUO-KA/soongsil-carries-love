@@ -7,6 +7,7 @@ export const ProfileWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-right: 18px;
 `;
 
 export const UserAvatar = styled.div`
@@ -16,6 +17,7 @@ export const UserAvatar = styled.div`
     width: 45px;
     height: 45px;
     border-radius: 50%;
+
     display: flex;          
     justify-content: center;
     align-items: center;  
@@ -47,5 +49,6 @@ export const UserName = styled.h1`
     color: ${colors.profile_text};
     line-height: 1.8;
     ${getFontStyle('Caption2_B')}
+    text-align: center;
 `;
 
