@@ -7,5 +7,5 @@ export const LogoWrapper = styled.div`
 `;
 
 export const StyledLogo = styled.img`
-    width: 240 453px;
+    width: 240px;
 `;
