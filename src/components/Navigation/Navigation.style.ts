@@ -83,15 +83,6 @@ export const StyledText = styled.p`
     white-space: nowrap;
 `;
 
-export const LabelWrapper = styled.div`
-    display: flex;
-    position: relative;
-    z-index: 100;
-    gap: 21px;
-    justify-content: center;
-    align-items: center;
-`;
-
 export const Column = styled.div`
     display: flex;
     flex-direction: column;
