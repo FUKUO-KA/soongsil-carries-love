@@ -40,23 +40,21 @@ const MessageSection = () => {
     )
 }
 
+const NAV_SECTIONS: Record<string, () => JSX.Element> = {
+    home: HomeSection,
+    graph: GraphSection,
+    message: MessageSection,
+  };
+
 export const Home = () => {
     const { selectedNavItem } = useNavigationStore();
+    const Section = NAV_SECTIONS[selectedNavItem];
     return (
         <HomeWrapper>
             <Header 
                 right={<Profile name="OO 고등학교" />}
                 left = {<Navigation/>} />
-            {selectedNavItem === 'home' && (
-                <HomeSection/>
-            )}
-            {selectedNavItem === 'graph' && (
-                <GraphSection/>
-            )}
-            {selectedNavItem === 'message' && (
-                <MessageSection/>
-            )}
+            {Section && <Section/>}
         </HomeWrapper>
     )
-
 }
