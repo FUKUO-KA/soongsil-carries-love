@@ -8,13 +8,11 @@ export const StyledMemberMenuContent = styled.div`
   flex-direction: column;
   gap: 12px;
   padding: 0 10px;
-  width: 100%;
 `;
 
 export const StyledMemberMenuHeader = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 30px;
   justify-content: space-between;
 `;
 
@@ -27,8 +25,8 @@ export const StyledTitle = styled.div`
   text-align: center;
   border-radius: 9px;
   padding-top: 1px;
-  overflow: hidden; /* 추가 */
-  text-overflow: ellipsis; /* 추가 */
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 `;
 
@@ -38,7 +36,6 @@ export const StyledBackIcon = styled.img`
 `;
 
 export const StyledDottedLine = styled.div`
-  width: 95%;
   height: 2px;
   justify-self: center;
   border-width: 2px;
