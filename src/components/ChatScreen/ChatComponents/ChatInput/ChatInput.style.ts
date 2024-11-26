@@ -27,6 +27,10 @@ export const StyledChatInput = styled.textarea`
   &:focus {
     outline: none;
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const StyledSubmitMessageBtn = styled.button`

@@ -8,13 +8,11 @@ export const StyledChatContent = styled.div`
   flex-direction: column;
   gap: 12px;
   padding: 0 10px;
-  width: 100%;
 `;
 
 export const StyledChatHeader = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 26px;
   justify-content: space-between;
 `;
 
@@ -28,8 +26,8 @@ export const StyledTitle = styled.div`
   border-radius: 9px;
   padding-top: 1px;
   margin-left: 14px;
-  overflow: hidden; /* 추가 */
-  text-overflow: ellipsis; /* 추가 */
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 `;
 
@@ -40,7 +38,6 @@ export const StyledHamburger = styled.img`
 `;
 
 export const StyledDottedLine = styled.div`
-  width: 95%;
   height: 2px;
   justify-self: center;
   border-width: 2px;
@@ -52,4 +49,18 @@ export const StyledChatBoxList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+  max-height: 64vh;
+  @media screen and (max-height: 850px) and (min-height: 751px) {
+    max-height: 62vh;
+  }
+
+  @media screen and (max-height: 750px) {
+    max-height: 58vh;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
