@@ -27,7 +27,7 @@ export const StyledName = styled.div<isMineProps>`
   width: fit-content;
   height: 21px;
   padding: 1.5px 10px;
-  background-color: #fea155;
+  background-color: ${colors.orange};
   ${getFontStyle('Caption2')};
   color: #fcf3cc;
   text-align: center;

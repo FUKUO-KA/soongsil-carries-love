@@ -10,7 +10,9 @@ export type ColorKeys =
   | 'sub_2'
   | 'profile_background'
   | 'profile_text_background'
-  | 'profile_text';
+  | 'profile_text'
+  | 'orange'
+  | 'brown';
 
 export type Colors = Record<ColorKeys, string>;
 
@@ -28,6 +30,8 @@ const colors: Colors = {
   profile_background: '#FCF3CC',
   profile_text_background: '#F7CC65',
   profile_text: '#877C5C',
+  orange: '#FEA155',
+  brown: '#A9916B',
 };
 
 export default colors;

@@ -30,7 +30,7 @@ export const StyledContactBtn = styled.button`
   width: 75px;
   height: 26px;
   border-radius: 16px;
-  background-color: #fea155;
+  background-color: ${colors.orange};
   ${getFontStyle('Caption2_B')};
   color: #fcf3cc;
   line-height: 0.7;

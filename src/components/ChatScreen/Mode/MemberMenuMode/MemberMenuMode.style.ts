@@ -1,6 +1,7 @@
 import { getFontStyle } from '@/styles/typo';
 import styled from 'styled-components';
 import dashedLine from '@/assets/icons/dashedLine.svg';
+import colors from '@/styles/color';
 
 export const StyledMemberMenuContent = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ export const StyledMemberMenuHeader = styled.div`
 export const StyledTitle = styled.div`
   width: 237px;
   height: 21px;
-  background-color: #fea155;
+  background-color: ${colors.orange};
   ${getFontStyle('Caption2')};
   color: #fcf3cc;
   text-align: center;

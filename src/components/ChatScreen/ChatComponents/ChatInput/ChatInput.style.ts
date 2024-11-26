@@ -9,7 +9,7 @@ export const StyledChatInputContainer = styled.div`
   gap: 8px;
   width: 100%;
   height: 52px;
-  background-color: #a9916b;
+  background-color: ${colors.brown};
   padding: 11px 10px;
 `;
 
@@ -33,7 +33,7 @@ export const StyledSubmitMessageBtn = styled.button`
   width: 60px;
   height: 29px;
   border-radius: 9px;
-  background-color: #fea155;
+  background-color: ${colors.orange};
   ${getFontStyle('Caption2')};
   color: ${colors.white};
   &:focus {
