@@ -3,12 +3,12 @@ import { getFontStyle } from '@/styles/typo';
 import styled, { css } from 'styled-components';
 
 interface isMineProps {
-  $isMine: boolean;
+  $isOwnMsg: boolean;
 }
 
 export const StyledChatBoxContainer = styled.div<isMineProps>`
   display: flex;
-  flex-direction: ${(props) => (props.$isMine ? 'row-reverse' : 'row')};
+  flex-direction: ${(props) => (props.$isOwnMsg ? 'row-reverse' : 'row')};
   gap: 6px;
 `;
 
@@ -32,7 +32,7 @@ export const StyledName = styled.div<isMineProps>`
   color: #fcf3cc;
   text-align: center;
   border-radius: 9px;
-  align-self: ${(props) => (props.$isMine ? 'flex-end' : 'flex-start')};
+  align-self: ${(props) => (props.$isOwnMsg ? 'flex-end' : 'flex-start')};
 `;
 
 export const StyledChatBubble = styled.div<isMineProps>`
@@ -45,5 +45,5 @@ export const StyledChatBubble = styled.div<isMineProps>`
   background-color: ${colors.white};
   color: black;
   border-top-right-radius: 0;
-  align-self: ${(props) => (props.$isMine ? 'flex-end' : 'flex-start')};
+  align-self: ${(props) => (props.$isOwnMsg ? 'flex-end' : 'flex-start')};
 `;

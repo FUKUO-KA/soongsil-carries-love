@@ -8,17 +8,17 @@ import {
 import ProfileImg from '@/assets/icons/chat_profile.svg';
 
 interface ChatBoxProps {
-  isMine: boolean;
+  isOwnMsg: boolean;
   message: string;
 }
 
-export const ChatBox = ({ isMine, message }: ChatBoxProps) => {
+export const ChatBox = ({ isOwnMsg, message }: ChatBoxProps) => {
   return (
-    <StyledChatBoxContainer $isMine={isMine}>
+    <StyledChatBoxContainer $isOwnMsg={isOwnMsg}>
       <StyledProfileImg src={ProfileImg} />
       <StyledNameBubbleContainer>
-        <StyledName $isMine={isMine}>나는영민</StyledName>
-        <StyledChatBubble $isMine={isMine}>{message}</StyledChatBubble>
+        <StyledName $isOwnMsg={isOwnMsg}>나는영민</StyledName>
+        <StyledChatBubble $isOwnMsg={isOwnMsg}>{message}</StyledChatBubble>
       </StyledNameBubbleContainer>
     </StyledChatBoxContainer>
   );

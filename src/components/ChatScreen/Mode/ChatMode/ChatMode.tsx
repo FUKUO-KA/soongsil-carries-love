@@ -24,8 +24,8 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
         </StyledChatHeader>
         <StyledDottedLine />
         <StyledChatBoxList>
-          <ChatBox isMine={false} message="나는영민나는영민나는영민나는영민나는영민나는영민" />
-          <ChatBox isMine={true} message="나는영민나는영민나는영민나는영민나는영민나는영민" />
+          <ChatBox isOwnMsg={false} message="나는영민나는영민나는영민나는영민나는영민나는영민" />
+          <ChatBox isOwnMsg={true} message="나는영민나는영민나는영민나는영민나는영민나는영민" />
         </StyledChatBoxList>
       </StyledChatContent>
       <ChatInput />
