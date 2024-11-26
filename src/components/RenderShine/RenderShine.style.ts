@@ -32,6 +32,7 @@ export const StyledShine = styled.img<ShineProps>`
 `;
 
 export const StyledShineContainer = styled.div`
-  width: inherit;
   position: absolute;
+  max-width: 390px;
+  z-index: -1;
 `;

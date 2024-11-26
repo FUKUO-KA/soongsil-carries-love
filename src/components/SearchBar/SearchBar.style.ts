@@ -17,8 +17,7 @@ export const StyledSearchBar = styled.input`
   border: 1px solid ${colors.box_border};
   background-color: transparent;
   color: ${colors.secondary_text};
-  ${getFontStyle('Caption2')};
-  font-weight: 700;
+  ${getFontStyle('Caption2_B')};
 
   &::placeholder {
     color: #c7c7c7;

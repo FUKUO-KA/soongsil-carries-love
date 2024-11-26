@@ -21,14 +21,12 @@ export const StyledTextFieldLabelContainer = styled.div`
 
 export const StyledTextFieldLabel = styled.label`
   padding-left: 5px;
-  ${getFontStyle('Caption3')};
-  font-weight: 700;
+  ${getFontStyle('Caption3_B')};
   color: ${colors.secondary_text};
 `;
 
 export const StyledTextFieldHelperText = styled.span<isTextFieldProps>`
-  ${getFontStyle('Caption3')};
-  font-weight: 700;
+  ${getFontStyle('Caption3_B')};
   color: ${({ $isError }) => ($isError ? `${colors.sub_1}` : `${colors.secondary_text}`)};
 `;
 
@@ -45,8 +43,7 @@ export const StyledTextFieldInput = styled.input<isTextFieldProps>`
   background: ${colors.white};
   box-sizing: border-box;
 
-  ${getFontStyle('Caption2')};
-  font-weight: 700;
+  ${getFontStyle('Caption2_B')};
   color: ${colors.secondary_text};
 
   &::placeholder {
