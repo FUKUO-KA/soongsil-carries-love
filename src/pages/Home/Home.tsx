@@ -14,7 +14,13 @@ import { useEffect } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { userCount } from '@/api/endpoints/hightschool/user-count';
 import { studentCount } from '@/api/endpoints/hightschool/student-count';
-import { UserCountResponse } from '@/api/types/response';
+import { GenderRatioResponse, UserCountResponse } from '@/api/types/response';
+
+interface GraphSectionProps {
+  userCount: UserCountResponse;
+  genderRatio: GenderRatioResponse;
+}
+
 const HomeSection = () => {
   return (
     <>
@@ -26,11 +32,48 @@ const HomeSection = () => {
   );
 };
 
-const GraphSection = ({ userCount }: { userCount: UserCountResponse }) => {
+const GraphSection = () => {
+  const { data: genderRatioData, isLoading: isLoadingGender } = useQuery({
+    queryKey: ['genderRatio'],
+    queryFn: () => genderRatio("7010059")
+  });
+
+  const { data: userCountData, isLoading: isLoadingUser } = useQuery({
+    queryKey: ['userCount'],
+    queryFn: () => userCount("7010059")
+  });
+
+  const { data: studentCountData, isLoading: isLoadingStudent } = useQuery({
+    queryKey: ['studentCount'],
+    queryFn: () => studentCount("7010059")
+  });
+
+  const isLoading = isLoadingGender || isLoadingUser || isLoadingStudent;
+
+  if (isLoading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        height: '100%' 
+      }}>
+        로딩 중...
+      </div>
+    );
+  }
+
+  if (!genderRatioData || !userCountData || !studentCountData) {
+    return <div>데이터를 불러오는데 실패했습니다.</div>;
+  }
+
   return (
     <>
       <Spacing size={28} direction="vertical" />
-      <FieChart userCount={userCount} />
+      <FieChart 
+        genderRatio={genderRatioData} 
+        userCount={userCountData} 
+      />
       <Spacing size={28} direction="vertical" />
       <BarChart />
     </>
@@ -48,7 +91,7 @@ const MessageSection = () => {
 
 const NAV_SECTIONS: Record<string, (props: any) => JSX.Element> = {
   home: HomeSection,
-  graph: (props: { userCount: UserCountResponse }) => <GraphSection userCount={props.userCount} />,
+  graph: GraphSection,
   message: MessageSection,
 };
 
@@ -77,7 +120,7 @@ export const Home = () => {
   return (
     <HomeWrapper>
       <Header right={<Profile name="OO 고등학교" />} left={<Navigation />} />
-      {Section && <Section userCount={userCountData} />}
+      {Section && <Section userCount={userCountData} genderRatio={genderRatioData} />}
     </HomeWrapper>
   );
 };

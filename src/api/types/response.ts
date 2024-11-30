@@ -6,3 +6,11 @@ export interface UserCountResponse {
     highschoolCode: string;
     userCount: number;
 }
+
+export interface GenderRatioResponse {
+    highschoolCode: string;
+    maleCount: number;
+    femaleCount: number;
+    unassignedCount: number;
+}
+

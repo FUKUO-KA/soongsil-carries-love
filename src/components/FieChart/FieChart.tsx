@@ -11,7 +11,7 @@ import { GraphContainer,
     ColorRect
 } from './FieChart.style';
 import { Spacing } from '@/components/Spacing/Spacing';
-import { UserCountResponse } from '@/api/types/response';
+import { UserCountResponse, GenderRatioResponse } from '@/api/types/response';
 
 interface FieChartDataItem {
     label: string;
@@ -19,14 +19,19 @@ interface FieChartDataItem {
     color: string;
 }
 
-export const FieChart = ({ userCount }: { userCount: UserCountResponse }) => {
+interface FieChartProps {
+    userCount: UserCountResponse;
+    genderRatio: GenderRatioResponse;
+}
+
+export const FieChart = ({ userCount, genderRatio }: FieChartProps) => {
     const svgRef = useRef<SVGSVGElement | null>(null);
 
     const data: FieChartDataItem[] = [
-        { label: '미지정', value: 50, color: '#E8E8E8'},
-        { label: '여자', value: 35, color: '#FF9F71'},
-        { label: '남자', value: 15, color: '#7CD7FF'},
-    ];
+        { label: '미지정', value: genderRatio.unassignedRatio || 0, color: '#E8E8E8'},
+        { label: '여자', value: genderRatio.femaleRatio || 0, color: '#FF9F71'},
+        { label: '남자', value: genderRatio.maleRatio || 0, color: '#7CD7FF'},
+    ].filter(item => item.value > 0);
 
     useEffect(() => {
         if (!svgRef.current) return;
@@ -75,24 +80,37 @@ export const FieChart = ({ userCount }: { userCount: UserCountResponse }) => {
             .attr('class', 'value-text')
             .attr('transform', function(d) {
                 const pos = arc.centroid(d);
-                switch(d.data.label) {
-                    case '미지정':
-                        return `translate(${pos[0]-20}, ${pos[1]})`; 
-                    case '여자':
-                        return `translate(${pos[0]+20}, ${pos[1] - 10})`; 
-                    case '남자':
-                        return `translate(${pos[0]+10}, ${pos[1]+15})`;
-                    default:
-                        return `translate(${pos[0]}, ${pos[1]})`;
+                const x = pos[0];
+                const y = pos[1];
+                
+                const angle = (d.startAngle + d.endAngle) / 2 * (180 / Math.PI);
+                
+                let xOffset = 0;
+                let yOffset = 0;
+                
+                if (angle < 90) {
+                    xOffset = 10;
+                    yOffset = -5;
+                } else if (angle < 180) {
+                    xOffset = -10;
+                    yOffset = -5;
+                } else if (angle < 270) {
+                    xOffset = -10;
+                    yOffset = 5;
+                } else {
+                    xOffset = 10;
+                    yOffset = 5;
                 }
+                
+                return `translate(${x + xOffset}, ${y + yOffset})`;
             })
             .style('text-anchor', 'middle')
             .style('dominant-baseline', 'middle')
             .style('font-size', '12px')
             .style('font-weight', '700')
             .style('fill', '#877C5C')
-            .text(d => `${d.data.value}%`);
-    }, []);
+            .text(d => `${d.data.value.toFixed(1)}%`);
+    }, [genderRatio, userCount]);
 
     return (
         <GraphWrapper>
@@ -107,17 +125,14 @@ export const FieChart = ({ userCount }: { userCount: UserCountResponse }) => {
                 </TitleWrapper>
                 <svg ref={svgRef}></svg>
                 <Row>
-                    <StyledText>남자</StyledText>
-                    <Spacing size={4} direction='horizontal'/>
-                    <ColorRect color={data[2].color}/>
-                    <Spacing size={8} direction='horizontal'/>
-                    <StyledText>여자</StyledText>
-                    <Spacing size={4} direction='horizontal'/>
-                    <ColorRect color={data[1].color}/>
-                    <Spacing size={8} direction='horizontal'/>
-                    <StyledText>미지정</StyledText>
-                    <Spacing size={4} direction='horizontal'/>
-                    <ColorRect color={data[0].color}/>
+                    {data.map((item) => (
+                        <div key={item.label} style={{ display: 'flex', alignItems: 'center' }}>
+                            <StyledText>{item.label}</StyledText>
+                            <Spacing size={4} direction='horizontal'/>
+                            <ColorRect color={item.color}/>
+                            <Spacing size={8} direction='horizontal'/>
+                        </div>
+                    ))}
                 </Row>
             </GraphContainer>
         </GraphWrapper>
