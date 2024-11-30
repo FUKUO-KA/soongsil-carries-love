@@ -11,6 +11,7 @@ import { GraphContainer,
     ColorRect
 } from './FieChart.style';
 import { Spacing } from '@/components/Spacing/Spacing';
+import { UserCountResponse } from '@/api/types/response';
 
 interface FieChartDataItem {
     label: string;
@@ -18,7 +19,7 @@ interface FieChartDataItem {
     color: string;
 }
 
-export const FieChart = () => {
+export const FieChart = ({ userCount }: { userCount: UserCountResponse }) => {
     const svgRef = useRef<SVGSVGElement | null>(null);
 
     const data: FieChartDataItem[] = [
@@ -101,7 +102,7 @@ export const FieChart = () => {
                     <StyledText>내 고등학교 동창</StyledText>
                     <Spacing size={14} direction='horizontal'/>
                     <StyledLabel>
-                        <StyledLabelText>301명</StyledLabelText>
+                        <StyledLabelText>{userCount.userCount}명</StyledLabelText>
                     </StyledLabel>
                 </TitleWrapper>
                 <svg ref={svgRef}></svg>
