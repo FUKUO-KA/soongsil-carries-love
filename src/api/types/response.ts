@@ -8,9 +8,8 @@ export interface UserCountResponse {
 }
 
 export interface GenderRatioResponse {
-    highschoolCode: string;
-    maleCount: number;
-    femaleCount: number;
-    unassignedCount: number;
+    unassignedRatio: number;
+    femaleRatio: number;
+    maleRatio: number;
 }
 
