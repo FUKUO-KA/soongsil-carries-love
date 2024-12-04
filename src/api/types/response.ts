@@ -6,3 +6,12 @@ export interface LoginResponse {
   highSchoolName: string;
   nickname: string;
 }
+
+export interface SchoolData {
+  schoolName: string;
+  userCount: number;
+}
+
+export interface HighSchoolRankingResponse {
+  schoolData: SchoolData[];
+}

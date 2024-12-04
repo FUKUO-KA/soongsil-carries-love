@@ -12,19 +12,7 @@ import {
 } from './DashBoard.style';
 import { Label } from '@/components/Label/Label';
 import UserIcon from '@/assets/icons/UserCountIcon.svg';
-
-interface SchoolData {
-    rank: number;
-    name: string;
-    userCount: number;
-  }
-  
-const schoolData: SchoolData[] = [
-    { rank: 1, name: "OO고등학교", userCount: 328 },
-    { rank: 2, name: "OO고등학교", userCount: 328,},
-    { rank: 3, name: "OO고등학교", userCount: 328 },
-    { rank: 4, name: "OO고등학교", userCount: 328 },
-];
+import { RankedSchoolData } from '@/types';
 
 const DashBoardHeader = () => {
     return (
@@ -38,7 +26,7 @@ const DashBoardHeader = () => {
     );
 }
 
-const DashBoardTable = () => {
+const DashBoardTable = ({ schoolData = [] }: { schoolData?: RankedSchoolData[] }) => {
     return (
         <>
             <TableWrapper>
@@ -53,10 +41,10 @@ const DashBoardTable = () => {
                         <Label labelText='인원수' size='small'/>
                     </div>
                 </TableHeader>
-                {schoolData.map((school) => (
+                {schoolData?.map((school) => (
                     <TableRow key={school.rank}>
                         <RankNumber>{school.rank}</RankNumber>
-                        <SchoolName>{school.name}</SchoolName>
+                        <SchoolName>{school.schoolName}</SchoolName>
                         <UserCount>
                             <img src={UserIcon} alt="user-icon" />
                             {school.userCount}
@@ -68,12 +56,12 @@ const DashBoardTable = () => {
     );
 }
 
-export const DashBoard = () => {
+export const DashBoard = ({ schoolData = [] }: { schoolData?: RankedSchoolData[] }) => {
     return (
         <Wrapper>
             <DashBoardWrapper>
                 <DashBoardHeader/>
-                <DashBoardTable/>
+                <DashBoardTable schoolData={schoolData}/>
             </DashBoardWrapper>
         </Wrapper>
     );
