@@ -51,7 +51,6 @@ export const useRegisterForm = () => {
       alert('회원가입이 완료되었습니다!');
       navigate('/home');
     } catch (error) {
-      console.error('회원가입 실패:', error);
       alert('회원가입 중 오류가 발생했습니다.');
     }
   };
