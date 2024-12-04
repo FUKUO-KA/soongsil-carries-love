@@ -26,6 +26,18 @@ const addRankToSchoolData = (data: SchoolData[] | undefined): RankedSchoolData[]
     }));
 };
 
+export const useRankedSchoolData = () => {
+  const { data: highSchoolRankingData, isLoading } = useQuery({
+    queryKey: ['highSchoolRanking'],
+    queryFn: highSchoolRanking,
+    staleTime: 1000 * 60,
+  });
+
+  const rankedSchoolData = addRankToSchoolData(highSchoolRankingData);
+
+  return { rankedSchoolData, isLoading };
+};
+
 const HomeSection = ({rankedSchoolData}: {rankedSchoolData: RankedSchoolData[]}) => {
   return (
     <>
@@ -65,15 +77,8 @@ const NAV_SECTIONS: Record<string, (props: any) => JSX.Element> = {
 
 export const Home = () => {
   const { selectedNavItem } = useNavigationStore();
+  const { rankedSchoolData, isLoading } = useRankedSchoolData();
   const Section = NAV_SECTIONS[selectedNavItem];
-  
-  const { data: highSchoolRankingData, isLoading } = useQuery({
-    queryKey: ['highSchoolRanking'],
-    queryFn: highSchoolRanking,
-    staleTime: 1000 * 60,
-  });
-
-  const rankedSchoolData = highSchoolRankingData ? addRankToSchoolData(highSchoolRankingData) : [];
   
   if (isLoading) {
     return (
