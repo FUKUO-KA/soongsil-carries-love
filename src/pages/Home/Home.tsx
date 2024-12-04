@@ -11,7 +11,6 @@ import { HomeWrapper } from './Home.style';
 import { ChatScreen } from '@/components/ChatScreen/ChatScreen';
 import { useQuery } from '@tanstack/react-query';
 import { highSchoolRanking } from '@/api/endpoints/highschool/highschool-ranking';
-import { useEffect } from 'react';
 import { SchoolData } from '@/api/types/response';
 import { RankedSchoolData } from '@/types';
 
