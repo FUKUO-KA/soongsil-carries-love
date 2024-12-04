@@ -50,9 +50,12 @@ const NAV_SECTIONS: Record<string, () => JSX.Element> = {
 export const Home = () => {
   const { selectedNavItem } = useNavigationStore();
   const Section = NAV_SECTIONS[selectedNavItem];
+  const userStorage = localStorage.getItem('user');
+  const highSchoolName = userStorage ? JSON.parse(userStorage).highSchoolName : '00 고등학교';
+
   return (
     <HomeWrapper>
-      <Header right={<Profile name="OO 고등학교" />} left={<Navigation />} />
+      <Header right={<Profile name={highSchoolName} />} left={<Navigation />} />
       {Section && <Section />}
     </HomeWrapper>
   );
