@@ -8,7 +8,7 @@ import {
 } from './BarChart.style';
 import { useRef, useEffect } from 'react';
 import colors from '@/styles/color';
-
+import { StudentCountResponse } from '@/api/types/response';
 interface BarChartDataItem {
   label: string;
   value: number;
@@ -22,15 +22,15 @@ const Title = () => {
   );
 };
 
-export const BarChart = () => {
+export const BarChart = ({ studentCount }: { studentCount: StudentCountResponse }) => {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const data: BarChartDataItem[] = [
-    { label: '19', value: 10 },
-    { label: '20', value: 20 },
-    { label: '21', value: 30 },
-    { label: '22', value: 40 },
-    { label: '23', value: 50 },
+    { label: '19', value: studentCount.studentIdDistribution['19'] || 0 },
+    { label: '20', value: studentCount.studentIdDistribution['20'] || 0 },
+    { label: '21', value: studentCount.studentIdDistribution['21'] || 0 },
+    { label: '22', value: studentCount.studentIdDistribution['22'] || 0 },
+    { label: '23', value: studentCount.studentIdDistribution['23'] || 0 },
   ];
 
   useEffect(() => {
