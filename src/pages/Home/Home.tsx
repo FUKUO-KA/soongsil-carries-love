@@ -10,16 +10,9 @@ import { BarChart } from '@/components/BarChart/BarChart';
 import { HomeWrapper } from './Home.style';
 import { ChatScreen } from '@/components/ChatScreen/ChatScreen';
 import { genderRatio } from '@/api/endpoints/hightschool/gender-ratio';
-import { useEffect } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { userCount } from '@/api/endpoints/hightschool/user-count';
 import { studentCount } from '@/api/endpoints/hightschool/student-count';
-import { GenderRatioResponse, UserCountResponse } from '@/api/types/response';
-
-interface GraphSectionProps {
-  userCount: UserCountResponse;
-  genderRatio: GenderRatioResponse;
-}
 
 const HomeSection = () => {
   return (
@@ -75,7 +68,7 @@ const GraphSection = () => {
         userCount={userCountData} 
       />
       <Spacing size={28} direction="vertical" />
-      <BarChart />
+      <BarChart studentCount={studentCountData} />
     </>
   );
 };
@@ -99,28 +92,10 @@ export const Home = () => {
   const { selectedNavItem } = useNavigationStore();
   const Section = NAV_SECTIONS[selectedNavItem];
 
-  const { data: genderRatioData, mutate: genderRatioMutate } = useMutation({
-    mutationFn: genderRatio,
-  });
-
-  const { data: userCountData, mutate: userCountMutate } = useMutation({
-    mutationFn: userCount,
-  });
-
-  const { data: studentCountData } = useQuery({
-    queryKey: ['studentCount'],
-    queryFn: () => studentCount("7010059"),
-  });
-
-  useEffect(() => {
-    userCountMutate("7010059");
-    genderRatioMutate("7010059");
-    console.log(userCountData);
-  }, []);
   return (
     <HomeWrapper>
       <Header right={<Profile name="OO 고등학교" />} left={<Navigation />} />
-      {Section && <Section userCount={userCountData} genderRatio={genderRatioData} />}
+      {Section && <Section/>}
     </HomeWrapper>
   );
 };
