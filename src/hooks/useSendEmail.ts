@@ -19,7 +19,7 @@ export const useSendEmail = () => {
       startTimer();
     },
     onError: () => {
-      alert('이메일 전송 실패:');
+      alert('이메일 전송 실패');
     },
   });
 
