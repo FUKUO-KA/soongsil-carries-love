@@ -1,3 +1,8 @@
 export interface LoginResponse {
-    /* 로그인 성공 시 반환되는 데이터 */
+  department: string;
+  email: string;
+  gender: string;
+  highSchoolCode: string;
+  highSchoolName: string;
+  nickname: string;
 }

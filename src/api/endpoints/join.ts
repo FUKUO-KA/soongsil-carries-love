@@ -1,22 +1,16 @@
-/* example */
-
 import APIAxiosInstance from '@/api/axios';
+import { JoinRequest } from '../types/request';
 
-/* 스웨거 기준 엔드포인트는 /join */
+export const join = async (requestData: JoinRequest) => {
+  const params = new URLSearchParams();
+  Object.entries(requestData).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      params.append(key, String(value));
+    }
+  });
 
-interface JoinRequestData {
-    email: string;
-    password: string;
-    college: string;
-    department: string;
-    nickname: string;
-    studentId: string;
-    gender: 'MALE' | 'FEMALE';
-    schoolCode: string;
-    createdAt: string; 
-}
-
-export const login = async (requestData: JoinRequestData) => {
-    const response = await APIAxiosInstance.post('/auth/login', requestData);
-    return response.data;
+  const response = await APIAxiosInstance.post('/join', null, {
+    params,
+  });
+  return response.data;
 };
