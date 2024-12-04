@@ -13,3 +13,8 @@ export interface GenderRatioResponse {
     maleRatio: number;
 }
 
+export interface StudentCountResponse {
+    studentIdDistribution: {
+        [studentId: string]: number;
+    };
+}
