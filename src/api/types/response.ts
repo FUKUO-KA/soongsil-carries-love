@@ -1,5 +1,6 @@
-export interface LoginResponse {
-    /* 로그인 성공 시 반환되는 데이터 */
+export interface SchoolData {
+    schoolName: string;
+    userCount: number;
 }
 
 export interface UserCountResponse {
@@ -17,4 +18,7 @@ export interface StudentCountResponse {
     studentIdDistribution: {
         [studentId: string]: number;
     };
+}
+export interface HighSchoolRankingResponse {
+    schoolData: SchoolData[];
 }
