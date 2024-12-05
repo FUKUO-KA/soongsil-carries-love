@@ -48,13 +48,13 @@ export const StyledTextFieldInput = styled.input<isTextFieldProps>`
 
   &::placeholder {
     color: #c7c7c7;
+    font-size: 10px;
   }
 
   &:focus {
     outline: none;
   }
 
-  // 자동 완성 시 배경색 제거
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
@@ -64,4 +64,23 @@ export const StyledTextFieldInput = styled.input<isTextFieldProps>`
     -webkit-text-fill-color: ${colors.text};
     transition: background-color 5000s ease-in-out 0s;
   }
+`;
+
+export const StyledRadioContainer = styled.div`
+  padding-left: 4px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+`;
+
+export const StyledRadioFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const StyledRadioLabel = styled.label`
+  padding-top: 2px;
+  ${getFontStyle('Caption3_B')};
+  color: ${colors.secondary_text};
 `;

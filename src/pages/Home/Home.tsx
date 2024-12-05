@@ -14,15 +14,13 @@ import { highSchoolRanking } from '@/api/endpoints/highschool/highschool-ranking
 import { SchoolData } from '@/api/types/response';
 import { RankedSchoolData } from '@/types';
 
-
-
 const addRankToSchoolData = (data: SchoolData[] | undefined): RankedSchoolData[] => {
   if (!data) return [];
   return data
     .sort((a, b) => b.userCount - a.userCount)
     .map((school, index) => ({
       ...school,
-      rank: index + 1
+      rank: index + 1,
     }));
 };
 
@@ -38,13 +36,13 @@ export const useRankedSchoolData = () => {
   return { rankedSchoolData, isLoading };
 };
 
-const HomeSection = ({rankedSchoolData}: {rankedSchoolData: RankedSchoolData[]}) => {
+const HomeSection = ({ rankedSchoolData }: { rankedSchoolData: RankedSchoolData[] }) => {
   return (
     <>
       <Spacing size={28} direction="vertical" />
       <LogoComponent />
       <Spacing size={28} direction="vertical" />
-      <DashBoard schoolData={rankedSchoolData}/>
+      <DashBoard schoolData={rankedSchoolData} />
     </>
   );
 };
@@ -70,7 +68,9 @@ const MessageSection = () => {
 };
 
 const NAV_SECTIONS: Record<string, (props: any) => JSX.Element> = {
-  home: (props: {rankedSchoolData: RankedSchoolData[]}) => <HomeSection rankedSchoolData={props.rankedSchoolData}/>,
+  home: (props: { rankedSchoolData: RankedSchoolData[] }) => (
+    <HomeSection rankedSchoolData={props.rankedSchoolData} />
+  ),
   graph: GraphSection,
   message: MessageSection,
 };
@@ -79,7 +79,10 @@ export const Home = () => {
   const { selectedNavItem } = useNavigationStore();
   const { rankedSchoolData, isLoading } = useRankedSchoolData();
   const Section = NAV_SECTIONS[selectedNavItem];
-  
+
+  const userStorage = localStorage.getItem('user');
+  const highSchoolName = userStorage ? JSON.parse(userStorage).highSchoolName : '00 고등학교';
+
   if (isLoading) {
     return (
       <HomeWrapper>
@@ -91,8 +94,8 @@ export const Home = () => {
 
   return (
     <HomeWrapper>
-      <Header right={<Profile name="OO 고등학교" />} left={<Navigation />} />
-      {Section && <Section rankedSchoolData={rankedSchoolData}/>}
+      <Header right={<Profile name={highSchoolName} />} left={<Navigation />} />
+      {Section && <Section rankedSchoolData={rankedSchoolData} />}
     </HomeWrapper>
   );
 };

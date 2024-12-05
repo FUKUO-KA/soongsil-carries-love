@@ -1,4 +1,3 @@
-// CustomTabs.tsx
 import { Tab, Tabs, Box } from '@mui/material';
 import { getFontStyle } from '@/styles/typo';
 import colors from '@/styles/color';

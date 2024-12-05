@@ -7,15 +7,19 @@ import {
   StyledTitlePinContainer,
 } from './LoginRegister.style';
 import LogoImg from '@/assets/logo.png';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { LoginRegisterTabs } from './LoginRegisterTabs/LoginRegisterTabs';
 
 export const LoginRegister = () => {
+  const location = useLocation();
+
+  const isSignUpPath = location.pathname !== '/sign';
+
   return (
     <StyledContainer>
       <StyledLogo src={LogoImg} />
       <WhiteContainer>
-        {location.pathname !== '/sign' ? (
+        {isSignUpPath ? (
           <>
             <StyledTitlePinContainer>
               <StyledTitlePin $width="LONG" />
