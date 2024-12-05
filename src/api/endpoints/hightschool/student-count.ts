@@ -1,6 +1,6 @@
 import APIAxiosInstance from '@/api/axios';
 
-export const studentCount = async (highschoolCode: string = '7010059') => {
+export const studentCount = async (highschoolCode: string) => {
     const response = await APIAxiosInstance.get(`/highschool/student-count`, {
         params: {
             highschoolCode: highschoolCode
