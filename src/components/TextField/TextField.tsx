@@ -1,5 +1,9 @@
-import { InputHTMLAttributes, useState } from 'react';
+import React, { InputHTMLAttributes } from 'react';
+import { Control, useController } from 'react-hook-form';
 import {
+  StyledRadioContainer,
+  StyledRadioFlex,
+  StyledRadioLabel,
   StyledTextFieldContainer,
   StyledTextFieldHelperText,
   StyledTextFieldInput,
@@ -9,53 +13,88 @@ import {
 } from './TextField.style';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
   title: string;
-  description: string;
-  isError?: boolean;
-  errorMessage?: string;
+  description?: string;
   isCertificate?: boolean;
+  isSelectGender?: boolean;
+  control: Control<any>;
+  rules?: Record<string, any>;
 }
 
 export const TextField = ({
+  name,
   title,
   description,
-  isError,
-  errorMessage,
   isCertificate,
-  ...props
+  isSelectGender,
+  control,
+  rules,
 }: InputProps) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
+  const { field, fieldState } = useController({
+    name,
+    control,
+    defaultValue: '',
+    rules,
+  });
 
   return (
     <StyledTextFieldContainer>
       <StyledTextFieldLabelContainer>
-        <StyledTextFieldLabel htmlFor={title}>
-          {props.required ? (
-            <>
-              {title}
-              <StyledTextFieldStarLabel> * </StyledTextFieldStarLabel>
-            </>
-          ) : (
-            title
-          )}
+        <StyledTextFieldLabel htmlFor={name}>
+          {title}
+          {rules?.required && <StyledTextFieldStarLabel> * </StyledTextFieldStarLabel>}
         </StyledTextFieldLabel>
-        {isError && (
-          <StyledTextFieldHelperText $isError={isError}>{errorMessage}</StyledTextFieldHelperText>
+        {fieldState.error && (
+          <StyledTextFieldHelperText $isError={!!fieldState.error}>
+            {fieldState.error.message}
+          </StyledTextFieldHelperText>
         )}
       </StyledTextFieldLabelContainer>
-      <StyledTextFieldInput
-        id={title}
-        placeholder={description}
-        $isError={isError}
-        value={inputValue}
-        onChange={handleInputChange}
-        $isCertificate={isCertificate}
-        {...props}
-      />
+      {isSelectGender ? (
+        <StyledRadioContainer>
+          <StyledRadioFlex>
+            <StyledRadioLabel htmlFor="FEMALE">여자</StyledRadioLabel>
+            <input
+              type="radio"
+              id="FEMALE"
+              value="FEMALE"
+              checked={field.value === 'FEMALE'}
+              onChange={() => field.onChange('FEMALE')}
+            />
+          </StyledRadioFlex>
+          <StyledRadioFlex>
+            <StyledRadioLabel htmlFor="MALE">남자</StyledRadioLabel>
+            <input
+              type="radio"
+              id="MALE"
+              value="MALE"
+              checked={field.value === 'MALE'}
+              onChange={() => field.onChange('MALE')}
+            />
+          </StyledRadioFlex>
+          <StyledRadioFlex>
+            <StyledRadioLabel htmlFor="NONE">미지정</StyledRadioLabel>
+            <input
+              type="radio"
+              id="NONE"
+              value="NONE"
+              checked={field.value === 'NONE'}
+              onChange={() => field.onChange('NONE')}
+            />
+          </StyledRadioFlex>
+        </StyledRadioContainer>
+      ) : (
+        <StyledTextFieldInput
+          id={name}
+          placeholder={description}
+          value={field.value}
+          onChange={field.onChange}
+          onBlur={field.onBlur}
+          $isError={!!fieldState.error}
+          $isCertificate={isCertificate}
+        />
+      )}
     </StyledTextFieldContainer>
   );
 };
