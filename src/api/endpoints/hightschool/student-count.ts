@@ -7,7 +7,6 @@ export const studentCount = async (highschoolCode: string = '7010059') => {
         },
         headers: {
             'Content-Type': 'application/json',
-            'accept': '*/*'
         }
     });
     return response.data;
