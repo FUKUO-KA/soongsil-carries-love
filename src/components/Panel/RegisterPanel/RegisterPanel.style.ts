@@ -23,7 +23,7 @@ export const StyledTimerContainer = styled.div`
   position: absolute;
   float: right;
   right: 44px;
-  top: 150px;
+  top: 165px;
 `;
 
 export const StyledTimerText = styled.span`
