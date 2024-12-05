@@ -52,11 +52,11 @@ export const RegisterDetail = () => {
         <TextField
           name="studentId"
           title="학번"
-          description="학번을 입력해주세요... ex) 20, 19"
+          description="학번을 입력해주세요... ex) 20201234"
           control={control}
           rules={{
             required: '학번을 입력하세요.',
-            pattern: { value: /^[0-9]{2}$/, message: '학번은 두 자리 숫자로 입력해주세요.' },
+            pattern: { value: /^[0-9]{8}$/, message: '학번은 8자리 숫자로 입력해주세요.' },
           }}
         />
         <TextField
