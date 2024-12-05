@@ -9,7 +9,10 @@ import { FieChart } from '@/components/FieChart/FieChart';
 import { BarChart } from '@/components/BarChart/BarChart';
 import { HomeWrapper } from './Home.style';
 import { ChatScreen } from '@/components/ChatScreen/ChatScreen';
+import { genderRatio } from '@/api/endpoints/hightschool/gender-ratio';
 import { useQuery } from '@tanstack/react-query';
+import { userCount } from '@/api/endpoints/hightschool/user-count';
+import { studentCount } from '@/api/endpoints/hightschool/student-count';
 import { highSchoolRanking } from '@/api/endpoints/highschool/highschool-ranking';
 import { SchoolData } from '@/api/types/response';
 import { RankedSchoolData } from '@/types';
@@ -48,12 +51,52 @@ const HomeSection = ({ rankedSchoolData }: { rankedSchoolData: RankedSchoolData[
 };
 
 const GraphSection = () => {
+  const userStorage = localStorage.getItem('user');
+  const highSchoolCode = userStorage ? JSON.parse(userStorage).highSchoolCode : '7010059';
+
+  const { data: genderRatioData, isLoading: isLoadingGender } = useQuery({
+    queryKey: ['genderRatio'],
+    queryFn: () => genderRatio(highSchoolCode)
+  });
+
+  const { data: userCountData, isLoading: isLoadingUser } = useQuery({
+    queryKey: ['userCount'],
+    queryFn: () => userCount(highSchoolCode)
+  });
+
+  const { data: studentCountData, isLoading: isLoadingStudent } = useQuery({
+    queryKey: ['studentCount'],
+    queryFn: () => studentCount(highSchoolCode)
+  });
+
+  const isLoading = isLoadingGender || isLoadingUser || isLoadingStudent;
+
+  if (isLoading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        height: '100%' 
+      }}>
+        로딩 중...
+      </div>
+    );
+  }
+
+  if (!genderRatioData || !userCountData || !studentCountData) {
+    return <div>데이터를 불러오는데 실패했습니다.</div>;
+  }
+
   return (
     <>
       <Spacing size={28} direction="vertical" />
-      <FieChart />
+      <FieChart 
+        genderRatio={genderRatioData} 
+        userCount={userCountData} 
+      />
       <Spacing size={28} direction="vertical" />
-      <BarChart />
+      <BarChart studentCount={studentCountData} />
     </>
   );
 };
@@ -86,7 +129,7 @@ export const Home = () => {
   if (isLoading) {
     return (
       <HomeWrapper>
-        <Header right={<Profile name="OO 고등학교" />} left={<Navigation />} />
+        <Header right={<Profile name={highSchoolName} />} left={<Navigation />} />
         <div>로딩 중...</div>
       </HomeWrapper>
     );

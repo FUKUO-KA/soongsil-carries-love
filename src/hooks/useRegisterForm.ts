@@ -49,7 +49,7 @@ export const useRegisterForm = () => {
     try {
       await join(joinRequest);
       alert('회원가입이 완료되었습니다!');
-      navigate('/home');
+      navigate('/sign');
     } catch (error) {
       alert('회원가입 중 오류가 발생했습니다.');
     }
