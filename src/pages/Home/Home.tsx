@@ -126,7 +126,7 @@ export const Home = () => {
   if (isLoading) {
     return (
       <HomeWrapper>
-        <Header right={<Profile name="OO 고등학교" />} left={<Navigation />} />
+        <Header right={<Profile name={highSchoolName} />} left={<Navigation />} />
         <div>로딩 중...</div>
       </HomeWrapper>
     );
