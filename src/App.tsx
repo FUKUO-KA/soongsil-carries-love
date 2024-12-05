@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Suspense } from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  RouteObject,
+  Outlet,
+  ScrollRestoration,
+} from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Frame from './components/Frame/Frame';
+import { Landing } from './pages/Landing/Landing';
+import { LoginRegister } from './pages/LoginRegister/LoginRegister';
+import { SelectSchool } from './pages/LoginRegister/SelectSchool/SelectSchool';
+import { RegisterDetail } from './pages/LoginRegister/RegisterDetail/RegisterDetail';
+import { Home } from '@/pages/Home/Home';
+const queryClient = new QueryClient();
 
-function App() {
-  const [count, setCount] = useState(0)
+const publicRoutes: RouteObject[] = [
+  {
+    path: '/',
+    element: (
+      <>
+        <ScrollRestoration />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </>
+    ),
+    children: [
+      {
+        path: '/',
+        element: <Landing />,
+      },
+      {
+        path: '/landing',
+        element: <Landing />,
+      },
+      {
+        path: '/sign',
+        element: <LoginRegister />,
+        children: [
+          {
+            path: 'select-school',
+            element: <SelectSchool />,
+          },
+          {
+            path: 'register',
+            element: <RegisterDetail />,
+          },
+        ],
+      },
+      {
+        path: '/home',
+        element: <Home />,
+      },
+    ],
+  },
+];
 
+const routes: RouteObject[] = [
+  {
+    element: (
+      <QueryClientProvider client={queryClient}>
+        <Outlet />
+      </QueryClientProvider>
+    ),
+    errorElement: <div>Error</div>,
+    children: [...publicRoutes],
+  },
+];
+
+const router = createBrowserRouter(routes);
+
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Frame>
+      <RouterProvider router={router} />
+    </Frame>
+  );
+};
 
-export default App
+export default App;
