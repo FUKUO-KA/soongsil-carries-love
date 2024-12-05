@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { sendmail } from '@/api/endpoints/mail/sendAuthNum';
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 export const useSendEmail = () => {
   const [isEmailSent, setIsEmailSent] = useState(false);
@@ -23,7 +23,7 @@ export const useSendEmail = () => {
     },
   });
 
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     if (intervalRef.current !== null) clearInterval(intervalRef.current);
 
     intervalRef.current = window.setInterval(() => {
@@ -39,14 +39,14 @@ export const useSendEmail = () => {
       timerRef.current -= 1;
       setDisplayTimer(timerRef.current);
     }, 1000);
-  };
+  }, []);
 
-  const stopTimer = () => {
+  const stopTimer = useCallback(() => {
     if (intervalRef.current !== null) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-  };
+  }, []);
 
   return {
     sendEmailMutation,
