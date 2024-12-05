@@ -51,19 +51,22 @@ const HomeSection = ({ rankedSchoolData }: { rankedSchoolData: RankedSchoolData[
 };
 
 const GraphSection = () => {
+  const userStorage = localStorage.getItem('user');
+  const highSchoolCode = userStorage ? JSON.parse(userStorage).highSchoolCode : '7010059';
+
   const { data: genderRatioData, isLoading: isLoadingGender } = useQuery({
     queryKey: ['genderRatio'],
-    queryFn: () => genderRatio("7010059")
+    queryFn: () => genderRatio(highSchoolCode)
   });
 
   const { data: userCountData, isLoading: isLoadingUser } = useQuery({
     queryKey: ['userCount'],
-    queryFn: () => userCount("7010059")
+    queryFn: () => userCount(highSchoolCode)
   });
 
   const { data: studentCountData, isLoading: isLoadingStudent } = useQuery({
     queryKey: ['studentCount'],
-    queryFn: () => studentCount("7010059")
+    queryFn: () => studentCount(highSchoolCode)
   });
 
   const isLoading = isLoadingGender || isLoadingUser || isLoadingStudent;
