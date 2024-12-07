@@ -26,12 +26,11 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
   const API_GATEWAY_ID = import.meta.env.VITE_APP_API_PATH;
   const SOCKET_API_GATEWAY_ID = import.meta.env.VITE_APP_SOCKET_API_PATH;
 
-  const userStorage = JSON.parse(localStorage.getItem('user'));
-  const highSchoolName = userStorage.highSchoolName;
-  const highSchoolCode = userStorage.highSchoolCode;
-  const myNickname = userStorage.nickname;
+  const userStorage = JSON.parse(localStorage.getItem('user') || '{}');
+  const highSchoolName = userStorage.highSchoolName || '';
+  const highSchoolCode = userStorage.highSchoolCode || '';
+  const myNickname = userStorage.nickname || '';
 
-  // State 관리: 메시지 객체 배열을 저장
   const [data, setData] = useState<{ message: string; user_id: string }[]>([]);
 
   const websocket = useRef<WebSocket | null>(null);
@@ -94,15 +93,14 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
         user_id: msg.user_id,
       }));
 
-      setData(formattedMessages); // 서버에서 받은 메시지들을 상태에 저장
+      setData(formattedMessages);
     } catch (error) {
       console.error('Error fetching chat data:', error);
     }
   };
 
   const onMessageReceived = (message: MessageObject) => {
-    // pong 응답은 pass
-    if (message && message.data) {
+    if (message && message.message === 'ping') {
       return;
     }
 
@@ -133,12 +131,7 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
   useEffect(() => {
     fetchChatData();
     connectToWebSocket();
-
-    // Cleanup WebSocket on component unmount
-    // return () => {
-    //   closeWebSocket();
-    // };
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []);
 
   useEffect(() => {
     if (bottomRef.current) {
