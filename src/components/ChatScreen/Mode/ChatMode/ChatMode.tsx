@@ -9,8 +9,8 @@ import {
 } from '../ChatMode/ChatMode.style';
 import { ChatBox } from '../../ChatComponents/ChatBox/ChatBox';
 import { ChatInput } from '../../ChatComponents/ChatInput/ChatInput';
-import { useEffect, useRef, useState } from "react";
-import APIAxiosInstance from "@/api/axios";
+import { useEffect, useRef, useState } from 'react';
+import APIAxiosInstance from '@/api/axios';
 
 interface ChatModeProps {
   setIsMemberMenuOpen: (value: boolean) => void;
@@ -26,7 +26,7 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
   const API_GATEWAY_ID = import.meta.env.VITE_APP_API_PATH;
   const SOCKET_API_GATEWAY_ID = import.meta.env.VITE_APP_SOCKET_API_PATH;
 
-  const userStorage = JSON.parse(localStorage.getItem("user"));
+  const userStorage = JSON.parse(localStorage.getItem('user'));
   const highSchoolName = userStorage.highSchoolName;
   const highSchoolCode = userStorage.highSchoolCode;
   const myNickname = userStorage.nickname;
@@ -36,6 +36,8 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
 
   const websocket = useRef<WebSocket | null>(null);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const bottomRef = useRef<HTMLDivElement | null>(null);
 
   const closeWebSocket = () => {
     if (timer.current) {
@@ -54,9 +56,9 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
     websocket.current = new WebSocket(address);
 
     websocket.current.onopen = () => {
-      console.log("WebSocket connected");
+      console.log('WebSocket connected');
       timer.current = setInterval(() => {
-        websocket.current?.send(JSON.stringify({ message: "ping" }));
+        websocket.current?.send(JSON.stringify({ message: 'ping' }));
       }, 60 * 1000);
     };
 
@@ -66,12 +68,12 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
     };
 
     websocket.current.onclose = () => {
-      console.log("WebSocket closed");
+      console.log('WebSocket closed');
       closeWebSocket();
     };
 
     websocket.current.onerror = (event) => {
-      console.error("WebSocket error observed:", event);
+      console.error('WebSocket error observed:', event);
       closeWebSocket();
     };
   };
@@ -79,12 +81,12 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
   const fetchChatData = async () => {
     try {
       const result = await APIAxiosInstance.get(
-          `https://${API_GATEWAY_ID}.execute-api.ap-northeast-2.amazonaws.com/${import.meta.env.VITE_APP_BACKEND_STAGE}/chat`,
-          {
-            params: {
-              room_id: highSchoolCode,
-            },
-          }
+        `https://${API_GATEWAY_ID}.execute-api.ap-northeast-2.amazonaws.com/${import.meta.env.VITE_APP_BACKEND_STAGE}/chat`,
+        {
+          params: {
+            room_id: highSchoolCode,
+          },
+        }
       );
 
       const formattedMessages = result.data.map((msg: MessageObject) => ({
@@ -94,13 +96,13 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
 
       setData(formattedMessages); // 서버에서 받은 메시지들을 상태에 저장
     } catch (error) {
-      console.error("Error fetching chat data:", error);
+      console.error('Error fetching chat data:', error);
     }
   };
 
   const onMessageReceived = (message: MessageObject) => {
     // pong 응답은 pass
-    if (message && message.data){
+    if (message && message.data) {
       return;
     }
 
@@ -115,16 +117,16 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
   const onSend = async (message: string) => {
     try {
       await APIAxiosInstance.put(
-          `https://${API_GATEWAY_ID}.execute-api.ap-northeast-2.amazonaws.com/${import.meta.env.VITE_APP_BACKEND_STAGE}/chat`,
-          {
-            room_id: highSchoolCode,
-            text: message,
-            user_id: myNickname,
-            name: "name_test",
-          }
+        `https://${API_GATEWAY_ID}.execute-api.ap-northeast-2.amazonaws.com/${import.meta.env.VITE_APP_BACKEND_STAGE}/chat`,
+        {
+          room_id: highSchoolCode,
+          text: message,
+          user_id: myNickname,
+          name: 'name_test',
+        }
       );
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error('Error sending message:', error);
     }
   };
 
@@ -138,29 +140,36 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
     // };
   }, []); // Empty dependency array ensures this runs only once on mount
 
+  useEffect(() => {
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [data]);
+
   return (
-      <>
-        <StyledChatContent>
-          <StyledChatHeader>
-            <StyledTitle>{highSchoolName}</StyledTitle>
-            <StyledHamburger src={Hamburger} onClick={() => setIsMemberMenuOpen(true)} />
-          </StyledChatHeader>
-          <StyledDottedLine />
-          <StyledChatBoxList>
-            {data.map((messageObj, index) => {
-              const isOwnMsg = messageObj.user_id === myNickname;
-              return (
-                  <ChatBox
-                      key={index}
-                      isOwnMsg={isOwnMsg}
-                      message={messageObj.message}
-                      author={messageObj.user_id}
-                  />
-              );
-            })}
-          </StyledChatBoxList>
-        </StyledChatContent>
-        <ChatInput onSend={onSend} />
-      </>
+    <>
+      <StyledChatContent>
+        <StyledChatHeader>
+          <StyledTitle>{highSchoolName}</StyledTitle>
+          <StyledHamburger src={Hamburger} onClick={() => setIsMemberMenuOpen(true)} />
+        </StyledChatHeader>
+        <StyledDottedLine />
+        <StyledChatBoxList>
+          {data.map((messageObj, index) => {
+            const isOwnMsg = messageObj.user_id === myNickname;
+            return (
+              <ChatBox
+                key={index}
+                isOwnMsg={isOwnMsg}
+                message={messageObj.message}
+                author={messageObj.user_id}
+              />
+            );
+          })}
+          <div ref={bottomRef}></div>
+        </StyledChatBoxList>
+      </StyledChatContent>
+      <ChatInput onSend={onSend} />
+    </>
   );
 };
