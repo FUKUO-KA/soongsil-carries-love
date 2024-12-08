@@ -36,14 +36,13 @@ export const StyledName = styled.div<isMineProps>`
 `;
 
 export const StyledChatBubble = styled.div<isMineProps>`
-  max-width: 90%;
+  max-width: 100%;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: ${(props) => (props.$isOwnMsg ? '12px 0px 12px 12px' : '0px 12px 12px 12px')};
   font-size: 14px;
   line-height: 1.5;
-  word-wrap: break-word;
+  word-break: break-word;
   background-color: ${colors.white};
   color: black;
-  border-top-right-radius: 0;
   align-self: ${(props) => (props.$isOwnMsg ? 'flex-end' : 'flex-start')};
 `;

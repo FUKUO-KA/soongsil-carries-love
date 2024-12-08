@@ -25,6 +25,7 @@ export const RegisterDetail = () => {
         <TextField
           name="password"
           title="비밀번호"
+          type="password"
           description="비밀번호를 입력해주세요..."
           control={control}
           rules={{
@@ -35,6 +36,7 @@ export const RegisterDetail = () => {
         <TextField
           name="confirmPassword"
           title="비밀번호 확인"
+          type="password"
           description="입력하신 비밀번호를 확인해주세요..."
           control={control}
           rules={{

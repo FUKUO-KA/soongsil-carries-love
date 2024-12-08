@@ -26,7 +26,7 @@ export const ChatMode = ({ setIsMemberMenuOpen }: ChatModeProps) => {
   const API_GATEWAY_ID = import.meta.env.VITE_APP_API_PATH;
   const SOCKET_API_GATEWAY_ID = import.meta.env.VITE_APP_SOCKET_API_PATH;
 
-  const userStorage = JSON.parse(localStorage.getItem('user') || '{}');
+  const userStorage = JSON.parse(sessionStorage.getItem('user') || '{}');
   const highSchoolName = userStorage.highSchoolName || '';
   const highSchoolCode = userStorage.highSchoolCode || '';
   const myNickname = userStorage.nickname || '';
