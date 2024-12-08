@@ -71,5 +71,6 @@ export const FrameContainer = styled.div`
   position: relative;
   min-height: calc(var(--vh, 1vh) * 100);
   margin-bottom: 40px;
+  margin-top: 30px;
   padding: 0 24px;
 `;
