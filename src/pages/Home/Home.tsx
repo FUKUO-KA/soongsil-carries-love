@@ -51,34 +51,36 @@ const HomeSection = ({ rankedSchoolData }: { rankedSchoolData: RankedSchoolData[
 };
 
 const GraphSection = () => {
-  const userStorage = localStorage.getItem('user');
+  const userStorage = sessionStorage.getItem('user');
   const highSchoolCode = userStorage ? JSON.parse(userStorage).highSchoolCode : '7010059';
 
   const { data: genderRatioData, isLoading: isLoadingGender } = useQuery({
     queryKey: ['genderRatio'],
-    queryFn: () => genderRatio(highSchoolCode)
+    queryFn: () => genderRatio(highSchoolCode),
   });
 
   const { data: userCountData, isLoading: isLoadingUser } = useQuery({
     queryKey: ['userCount'],
-    queryFn: () => userCount(highSchoolCode)
+    queryFn: () => userCount(highSchoolCode),
   });
 
   const { data: studentCountData, isLoading: isLoadingStudent } = useQuery({
     queryKey: ['studentCount'],
-    queryFn: () => studentCount(highSchoolCode)
+    queryFn: () => studentCount(highSchoolCode),
   });
 
   const isLoading = isLoadingGender || isLoadingUser || isLoadingStudent;
 
   if (isLoading) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        height: '100%' 
-      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}
+      >
         로딩 중...
       </div>
     );
@@ -91,10 +93,7 @@ const GraphSection = () => {
   return (
     <>
       <Spacing size={28} direction="vertical" />
-      <FieChart 
-        genderRatio={genderRatioData} 
-        userCount={userCountData} 
-      />
+      <FieChart genderRatio={genderRatioData} userCount={userCountData} />
       <Spacing size={28} direction="vertical" />
       <BarChart studentCount={studentCountData} />
     </>
@@ -123,7 +122,7 @@ export const Home = () => {
   const { rankedSchoolData, isLoading } = useRankedSchoolData();
   const Section = NAV_SECTIONS[selectedNavItem];
 
-  const userStorage = localStorage.getItem('user');
+  const userStorage = sessionStorage.getItem('user');
   const highSchoolName = userStorage ? JSON.parse(userStorage).highSchoolName : '00 고등학교';
 
   if (isLoading) {

@@ -15,6 +15,7 @@ import {
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   title: string;
+  type?: string;
   description?: string;
   isCertificate?: boolean;
   isSelectGender?: boolean;
@@ -25,6 +26,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const TextField = ({
   name,
   title,
+  type,
   description,
   isCertificate,
   isSelectGender,
@@ -87,6 +89,7 @@ export const TextField = ({
       ) : (
         <StyledTextFieldInput
           id={name}
+          type={type}
           placeholder={description}
           value={field.value}
           onChange={field.onChange}

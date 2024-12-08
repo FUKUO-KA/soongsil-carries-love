@@ -39,10 +39,8 @@ export const LoginPanel = () => {
       setUser({ email: data.email, password: data.password });
       alert('로그인에 성공했습니다!');
       navigate('/home');
-      localStorage.setItem('user', JSON.stringify(response));
-      console.log('응답 데이터:', response);
+      sessionStorage.setItem('user', JSON.stringify(response));
     } catch (error: any) {
-      console.error('로그인 실패:', error);
       setError('email', {
         type: 'manual',
         message: '로그인에 실패했습니다. 다시 시도해주세요.',

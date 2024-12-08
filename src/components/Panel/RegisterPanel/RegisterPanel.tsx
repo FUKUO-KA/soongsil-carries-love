@@ -83,7 +83,6 @@ export const RegisterPanel = () => {
         </StyledCertificateBtnContainer>
         <TextField
           name="authCode"
-          type="password"
           title="인증번호"
           description="인증번호를 입력하세요..."
           control={control}
