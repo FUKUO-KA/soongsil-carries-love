@@ -29,7 +29,7 @@ const publicRoutes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Landing />,
+        element: <Home />,
       },
       {
         path: '/landing',
@@ -48,10 +48,6 @@ const publicRoutes: RouteObject[] = [
             element: <RegisterDetail />,
           },
         ],
-      },
-      {
-        path: '/home',
-        element: <Home />,
       },
     ],
   },
