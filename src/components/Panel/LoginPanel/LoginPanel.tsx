@@ -38,7 +38,7 @@ export const LoginPanel = () => {
       const response: LoginResponse = await login(data);
       setUser({ email: data.email, password: data.password });
       alert('로그인에 성공했습니다!');
-      navigate('/home');
+      navigate('/');
       sessionStorage.setItem('user', JSON.stringify(response));
     } catch (error: any) {
       setError('email', {
