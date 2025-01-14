@@ -1,6 +1,8 @@
 # SSU-CARRIES-LOVE WEB CLIENT REPOSITORY
 
-숭실은 사랑을 싣고 FrontEnd 레포지토리입니다💕
+숭실대학교 고등학교 동창 네트워킹 서비스, 숭실은 사랑을 싣고 FrontEnd 레포지토리입니다💕
+
+https://github.com/user-attachments/assets/c7b73ed7-5aff-43ca-8dbc-c07be6135fc1
 
 ## 🌱 Commit Convention
 
